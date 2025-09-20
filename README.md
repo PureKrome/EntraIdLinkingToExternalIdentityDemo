@@ -57,6 +57,23 @@ When we sign into our app using EntraID, this is what a default page looks like:
       - `https://localhost:7175/signin-google`
 
 
+## Pre-requisites
+- An EntraID tenant (free to create)
+- An App Registration in EntraID (free to create)
+- A Google Account (free to create)
+- .NET 9 SDK (free to download)
+- Visual Studio or VS Code (free to download)
+- Basic knowledge of .NET and C#
+- Basic knowledge of EntraID and App Registrations
+- Basic knowledge of Google Auth Platform
+- 🥰 Some passion for learning
+
+## Running the demo
+- Clone this repo (git clone ....)
+- `dotnet run`
+- Navigate to `https://localhost:7175`
+- 💸
+
 ---
 
 ## Contribute
