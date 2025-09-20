@@ -1,0 +1,41 @@
+@model EntraDemo.Models.UserListViewModel
+@{
+    ViewData["Title"] = "User List";
+}
+
+<h2>All EntraID Users</h2>
+
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-primary">Create New User</a>
+</div>
+
+@if (Model.Users.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>User ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Users)
+                {
+                    <tr>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td><small>@user.Id</small></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        No users found in EntraID.
+    </div>
+}

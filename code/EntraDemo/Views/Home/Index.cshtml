@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">User Management System</h1>
+    <p>Manage users with Azure Entra ID.</p>
+    <p>@DateTime.Now</p>
+    
+    @if (ViewBag.AuthError != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Authentication Error:</strong> @ViewBag.AuthError
+        </div>
+    }
+    
+    @if (User.Identity.IsAuthenticated)
+    {
+        var userName = User.FindFirst("user_name")?.Value ?? "User";
+        
+        <div class="alert alert-success">
+            <h5><i class="fas fa-building"></i> Welcome, @userName!</h5>
+            <p class="mb-2">
+                <i class="fas fa-key text-primary"></i> You are signed in with your Entra ID account.
+            </p>
+            <p class="mb-0">You can manage users and configure your account settings.</p>
+        </div>
+        
+        <div class="mt-4">
+            <a asp-controller="User" asp-action="Create" class="btn btn-primary me-2">Create New User</a>
+            <a asp-controller="User" asp-action="List" class="btn btn-secondary me-2">View All Users</a>
+            <a asp-controller="Home" asp-action="Profile" class="btn btn-info">My Profile</a>
+        </div>
+    }
+    else
+    {
+        <div class="mt-4">
+            <h5>Sign in to your Entra ID account:</h5>
+            <div class="d-flex justify-content-center gap-3 mt-3">
+                <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-lg">
+                    <i class="fas fa-building"></i> Sign in with Entra ID
+                </a>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">How It Works</h6>
+                            <p class="card-text">
+                                <strong><i class="fas fa-building text-primary"></i> Entra ID Authentication:</strong><br>
+                                All users are managed through Azure Entra ID. Once signed in, you can:
+                            </p>
+                            <ul class="text-start">
+                                <li>Create and manage users</li>
+                                <li>View your profile information</li>
+                                <li>Link external accounts (like Google) for convenience</li>
+                            </ul>
+                            <div class="alert alert-info small mt-3 mb-0">
+                                <strong>Note:</strong> All users are Entra ID users. External account linking is optional 
+                                and provides additional convenience features.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-3">
+            <small class="text-muted">
+                <a asp-controller="Home" asp-action="TestCiamConfig" class="text-decoration-none">
+                    🔧 Test CIAM Configuration
+                </a>
+            </small>
+        </div>
+    }
+</div>

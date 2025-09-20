@@ -1,0 +1,173 @@
+@{
+    ViewData["Title"] = "Google Session Data";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Google Session Information</h1>
+    <p class="lead">Google authentication data for your current Entra ID session</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i> <strong>Note:</strong> You are signed in to your <strong>Entra ID account</strong> via Google authentication. 
+            Below is the Google profile data from your current session.
+        </div>
+        
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0"><i class="fab fa-google"></i> Google Session Data</h5>
+            </div>
+            <div class="card-body">
+                @if (!string.IsNullOrWhiteSpace(ViewBag.GooglePicture))
+                {
+                    <div class="text-center mb-3">
+                        <img src="@ViewBag.GooglePicture" alt="Profile Picture" class="rounded-circle border" width="120" height="120">
+                    </div>
+                }
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <dl class="row">
+                            <dt class="col-sm-5">Google ID:</dt>
+                            <dd class="col-sm-7">
+                                <code class="bg-light p-1 text-break">@ViewBag.GoogleUserId</code>
+                            </dd>
+
+                            <dt class="col-sm-5">Email:</dt>
+                            <dd class="col-sm-7">
+                                <span class="text-break">@ViewBag.GoogleEmail</span>
+                            </dd>
+
+                            <dt class="col-sm-5">Full Name:</dt>
+                            <dd class="col-sm-7">@ViewBag.GoogleName</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="row">
+                            <dt class="col-sm-5">Given Name:</dt>
+                            <dd class="col-sm-7">
+                                @if (!string.IsNullOrWhiteSpace(ViewBag.GoogleGivenName))
+                                {
+                                    @ViewBag.GoogleGivenName
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Not available</span>
+                                }
+                            </dd>
+
+                            <dt class="col-sm-5">Surname:</dt>
+                            <dd class="col-sm-7">
+                                @if (!string.IsNullOrWhiteSpace(ViewBag.GoogleSurname))
+                                {
+                                    @ViewBag.GoogleSurname
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Not available</span>
+                                }
+                            </dd>
+
+                            <dt class="col-sm-5">Profile Picture:</dt>
+                            <dd class="col-sm-7">
+                                @if (!string.IsNullOrWhiteSpace(ViewBag.GooglePicture))
+                                {
+                                    <a href="@ViewBag.GooglePicture" target="_blank" class="btn btn-sm btn-outline-primary">View Full Size</a>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Not available</span>
+                                }
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <hr>
+                
+                <div class="alert alert-success">
+                    <strong><i class="fas fa-link"></i> Linked Google ID:</strong> 
+                    <code class="bg-white p-1 ms-2">@ViewBag.GoogleUserId</code>
+                    <br>
+                    <small class="text-muted">This Google account is linked to your Entra ID profile, allowing you to sign in via either method.</small>
+                </div>
+
+                @if (!string.IsNullOrWhiteSpace(ViewBag.GoogleAccessToken))
+                {
+                    <div class="mt-3">
+                        <h6><i class="fas fa-lock"></i> Access Token Information:</h6>
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <p class="small mb-2"><strong>Access Token (truncated for security):</strong></p>
+                                <code class="text-break small">
+                                    @{
+                                        string token = ViewBag.GoogleAccessToken?.ToString() ?? "";
+                                        string truncatedToken = token.Length > 50 ? token.Substring(0, 50) + "..." : token;
+                                    }
+                                    @truncatedToken
+                                </code>
+                                <div class="mt-2">
+                                    <small class="text-muted">
+                                        <i class="fas fa-info-circle"></i> 
+                                        This token can be used to access Google APIs on your behalf during this session.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="mt-3">
+                    <h6><i class="fas fa-list"></i> Google Profile Claims:</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Claim Type</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>sub</code> (Google ID)</td>
+                                    <td><code>@ViewBag.GoogleUserId</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>email</code></td>
+                                    <td>@ViewBag.GoogleEmail</td>
+                                </tr>
+                                <tr>
+                                    <td><code>name</code></td>
+                                    <td>@ViewBag.GoogleName</td>
+                                </tr>
+                                <tr>
+                                    <td><code>given_name</code></td>
+                                    <td>@(ViewBag.GoogleGivenName ?? "Not available")</td>
+                                </tr>
+                                <tr>
+                                    <td><code>family_name</code></td>
+                                    <td>@(ViewBag.GoogleSurname ?? "Not available")</td>
+                                </tr>
+                                <tr>
+                                    <td><code>picture</code></td>
+                                    <td class="text-break small">@(ViewBag.GooglePicture ?? "Not available")</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-between">
+                    <a asp-controller="Home" asp-action="Profile" class="btn btn-primary">
+                        <i class="fas fa-user"></i> Back to Profile
+                    </a>
+                    <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-danger">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

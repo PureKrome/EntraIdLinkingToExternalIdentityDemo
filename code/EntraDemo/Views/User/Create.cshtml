@@ -1,0 +1,33 @@
+@model EntraDemo.Models.CreateUserViewModel
+@{
+    ViewData["Title"] = "Create User";
+}
+
+<h2>Create New User in EntraID</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Full Name</label>
+        <input asp-for="Name" class="form-control" required />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email Address</label>
+        <input asp-for="Email" type="email" class="form-control" required />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">Initial Password</label>
+        <input asp-for="Password" class="form-control" value="@Guid.NewGuid()" required />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Create User</button>
+    <a asp-action="List" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

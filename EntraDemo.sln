@@ -1,0 +1,43 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntraDemo", "code\EntraDemo\EntraDemo.csproj", "{B43760DE-2323-3713-4233-4EBE63ACF014}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".GitHub", ".GitHub", "{8EEF0270-BDA9-465C-A382-A1CA95F75DD4}"
+	ProjectSection(SolutionItems) = preProject
+		.github\CODE_OF_CONDUCT.md = .github\CODE_OF_CONDUCT.md
+		.github\CONTRIBUTING.md = .github\CONTRIBUTING.md
+		.github\FUNDING.yml = .github\FUNDING.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B43760DE-2323-3713-4233-4EBE63ACF014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B43760DE-2323-3713-4233-4EBE63ACF014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B43760DE-2323-3713-4233-4EBE63ACF014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B43760DE-2323-3713-4233-4EBE63ACF014}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8EEF0270-BDA9-465C-A382-A1CA95F75DD4} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9DA610C2-0111-4BEA-993B-D3320AF21E2F}
+	EndGlobalSection
+EndGlobal
