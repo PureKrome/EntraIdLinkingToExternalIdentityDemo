@@ -47,15 +47,14 @@ When we sign into our app using EntraID, this is what a default page looks like:
     <img width="805" height="507" alt="Image" src="https://github.com/user-attachments/assets/943d8b52-a373-485d-8060-2bad546b7b3b" />
   - Google `ClientId` and `ClientSecret` (From Auth Platform)
     - The following Authorised Redirect Url's are required:
-      - https://login.microsoftonline.com
-      - https://login.microsoftonline.com/te/[EntraID TenantId]/oauth2/authresp
-      - https://login.microsoftonline.com/te/[EntraID Domain]/oauth2/authresp (.e.g. https://login.microsoftonline.com/te/fancypants.onmicrosoft.com/oauth2/authresp)
-      - https://[EntraID TenantId].ciamlogin.com/[EntraID TenantId]/federation/oidc/accounts.google.com
-      - https://[EntraID TenantId].ciamlogin.com/[EntraID Domain]/federation/oidc/accounts.google.com
-      - https://[EntraID Project name].ciamlogin.com/[EntraID TenantId]/federation/oauth2 (e.g. https://fancypants.ciamlogin.com/11111111-2222-3333-4444-555555555555/federation/oauth2)
-      - https://[EntraID Project name].ciamlogin.com/EntraID Project Name].onmicrosoft.com/federation/oauth2 (e.g. https://fancypants.ciamlogin.com/fancypants.onmicrosoft.com/federation/oauth2)
-      - https://localhost:7175/signin-google
-
+      - `https://login.microsoftonline.com`
+      - `https://login.microsoftonline.com/te/[EntraID TenantId]/oauth2/authresp`
+      - `https://login.microsoftonline.com/te/[EntraID Domain]/oauth2/authresp` (.e.g. `https://login.microsoftonline.com/te/fancypants.onmicrosoft.com/oauth2/authresp`)
+      - `https://[EntraID TenantId].ciamlogin.com/[EntraID TenantId]/federation/oidc/accounts.google.com`
+      - `https://[EntraID TenantId].ciamlogin.com/[EntraID Domain]/federation/oidc/accounts.google.com`
+      - `https://[EntraID Project name].ciamlogin.com/[EntraID TenantId]/federation/oauth2` (e.g. `https://fancypants.ciamlogin.com/11111111-2222-3333-4444-555555555555/federation/oauth2)`
+      - `https://[EntraID Project name].ciamlogin.com/EntraID Project Name].onmicrosoft.com/federation/oauth2` (e.g. `https://fancypants.ciamlogin.com/fancypants.onmicrosoft.com/federation/oauth2`)
+      - `https://localhost:7175/signin-google`
 
 
 ---
